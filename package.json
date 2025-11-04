@@ -1,0 +1,27 @@
+{
+  "name": "origin-codingtest",
+  "version": "1.0.0",
+  "description": "Sample Coding Test for Origin Interview",
+  "author": "Raghu Alapati",
+  "license": "ISC",
+  "type": "module",
+  "scripts": {
+    "install:all": "npm install && npx playwright install --with-deps",
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:report": "npx playwright show-report results/playwright-report",
+    "report:open": "npx playwright show-report",
+    "lint": "eslint . --ext .ts,.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.1",
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.3",
+    "@typescript-eslint/parser": "^8.46.3",
+    "eslint": "^9.39.1",
+    "jiti": "^2.6.1",
+    "typescript": "^5.1.6",
+    "eslint-plugin-playwright": "^2.3.0"
+  }
+}
