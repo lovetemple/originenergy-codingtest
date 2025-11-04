@@ -1,4 +1,3 @@
-/* eslint-disable import/no-default-export */
 /* eslint-env node */
 import { defineConfig, devices } from '@playwright/test';
 
