@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, Request } from '@playwright/test';
 import { safeClick, safeFill, waitForVisible, isChecked, navigateTo } from '../utils/actions';
 
 export class OriginPricingPage {
@@ -60,22 +60,43 @@ export class OriginPricingPage {
     return planNames;
   }
   
-  async performReferralHandOff(): Promise<[Page, string]> {
+  async performReferralHandOff(): Promise<[Page, string, boolean, boolean]> {
     this.planName = await this.planList.locator('a').first().textContent() || '';
+    
+    // Set up network request monitoring on the CURRENT page (before click)
+    let networkRequestMadeToEnergyMadeEasy = false;
+    let originReferrerFound = false;
+    
+    const requestHandler = (request: Request) => {
+      const url = request.url();
+      const headers = request.headers();
+      
+      if (url.includes('energymadeeasy.gov.au')) {
+        networkRequestMadeToEnergyMadeEasy = true;
+        
+        // Check for Origin referrer in headers
+        const referrer = headers['referer'];
+        if (referrer.includes('https://www.originenergy.com.au/')){
+          originReferrerFound = true;
+          // eslint-disable-next-line no-console
+          console.log(`Origin referrer found in headers: ${referrer}`);
+        }
+      }
+    };
+    
+    // Start monitoring requests on the current page
+    this.page.on('request', requestHandler);
+    
     const [newPage] = await Promise.all([
       this.page.waitForEvent('popup'),  // Waits for new tab
       this.planList.locator('a').first().click(),          // Click triggers the popup
     ]);
 
+    // Remove the request listener to avoid memory leaks
+    this.page.off('request', requestHandler);
+    
     // Wait until the new page finishes loading
     await newPage.waitForLoadState('domcontentloaded');
-    return [newPage, this.planName];
+    return [newPage, this.planName, networkRequestMadeToEnergyMadeEasy, originReferrerFound];
   }
 }
-
-// await page.getByRole('link', { name: 'Origin Everyday Rewards' }).click();
-//   const page4 = await page4Promise;
-//   await expect(page4.locator('#main img')).toBeVisible();
-//   await expect(page4.getByRole('heading', { name: 'Origin Everyday Rewards' })).toBeVisible();
-//   await expect(page4.getByRole('combobox', { name: 'Enter your postcode to view' })).toBeVisible();
-//await newPage.close();
