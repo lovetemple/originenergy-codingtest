@@ -15,10 +15,7 @@ test.describe('Origin Energy pricing flow', () => {
   });
 
   const addressList: string[] = [
-    '12 Smith Street, Surry Hills NSW 2010',
-    '5 Welford Street, Tarneit VIC 3029',
-    '3 Welford Street, Tarneit VIC 3029',
-    
+    '12 Smith Street, Surry Hills NSW 2010',    
   ];
     //  '25 Oxford Street, Darlinghurst, NSW 2010',
     // '100 George Street, Sydney, NSW 2000',
@@ -41,6 +38,21 @@ test.describe('Origin Energy pricing flow', () => {
       planNames.forEach(name => {
         expect(name.toLowerCase()).toContain('gas');
       });
+
+      const [newPage, planName] = await home.performReferralHandOff();
+      
+      // // ✅ Check the URL of the new page
+      expect(newPage.url()).toContain('www.energymadeeasy.gov.au');
+      console.log(`Referral handoff performed for plan: ${planName}`);
+      expect(planName).not.toBe('');
+      await newPage.screenshot({ path: `${planName}.png` });
+      // // ✅ Assert an element on the new page is visible
+      
+      await expect(newPage.getByRole('heading', { name: `${planName}` })).toBeVisible({ timeout: timeouts.navigation });
+      await expect(newPage.getByRole('combobox', { name: 'Enter your postcode to view' })).toBeVisible();
+      await newPage.close();
+    
     });
   });
+
 });

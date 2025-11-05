@@ -1,6 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-import { safeClick, safeFill, waitForVisible, isChecked, getCount, navigateTo } from '../utils/actions';
-import { time } from 'console';
+import { safeClick, safeFill, waitForVisible, isChecked, navigateTo } from '../utils/actions';
 
 export class OriginPricingPage {
   readonly page: Page;
@@ -10,6 +9,7 @@ export class OriginPricingPage {
   readonly planList: Locator;
   readonly electricityCheckbox: Locator;
   readonly gasPlanItems: Locator;
+  planName: string = '';
 
   constructor(page: Page) {
     this.page = page;
@@ -26,8 +26,6 @@ export class OriginPricingPage {
 
   async searchAddress(address: string) {
     const suggestedText: string = address.split(' ').slice(1, -1).join(' ').trim();
-    console.log(`Suggested text for locator: ${suggestedText}`);
-   // const dynamicSuggestions = this.page.getByText(suggestedText); // works too
     const dynamicSuggestions = this.page.getByRole('option', { name: suggestedText });
     await safeClick(this.addressButton);
     await safeClick(this.searchInput);
@@ -36,9 +34,8 @@ export class OriginPricingPage {
     await safeClick(dynamicSuggestions.first());
   }
 
-  async plansVisible():Promise<boolean>{
+  async plansVisible(): Promise<boolean> {
     await waitForVisible(this.planList.first(), { timeout: 10000 });
-    console.log(`Number of plans available: ${await this.planList.count()}`);
     return (await this.planList.count()) > 0;
   }
 
@@ -51,9 +48,6 @@ export class OriginPricingPage {
 
   async checkGasPlansVisible(): Promise<string[]> {
     await waitForVisible(this.gasPlanItems.first());
-    //const gasCount = await getCount(this.gasPlanItems);
-    // eslint-disable-next-line no-console
-    //console.log(`Number of gas plans available: ${gasCount}`);
 
     const planRows = await this.planList.all();
     const planNames = await Promise.all(
@@ -63,8 +57,25 @@ export class OriginPricingPage {
       }),
     );
 
-    // eslint-disable-next-line no-console
-    //console.log('All Gas Plans:', planNames);
     return planNames;
   }
+  
+  async performReferralHandOff(): Promise<[Page, string]> {
+    this.planName = await this.planList.locator('a').first().textContent() || '';
+    const [newPage] = await Promise.all([
+      this.page.waitForEvent('popup'),  // Waits for new tab
+      this.planList.locator('a').first().click(),          // Click triggers the popup
+    ]);
+
+    // Wait until the new page finishes loading
+    await newPage.waitForLoadState('domcontentloaded');
+    return [newPage, this.planName];
+  }
 }
+
+// await page.getByRole('link', { name: 'Origin Everyday Rewards' }).click();
+//   const page4 = await page4Promise;
+//   await expect(page4.locator('#main img')).toBeVisible();
+//   await expect(page4.getByRole('heading', { name: 'Origin Everyday Rewards' })).toBeVisible();
+//   await expect(page4.getByRole('combobox', { name: 'Enter your postcode to view' })).toBeVisible();
+//await newPage.close();
