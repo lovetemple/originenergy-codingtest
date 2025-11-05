@@ -1,18 +1,19 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
+test.skip('has title', async ({ page }) => {
+  await page.goto('https://www.originenergy.com.au/pricing.html');
+  await page.getByRole('tab', { name: 'Address' }).click();
+  await page.getByRole('tab', { name: 'Postcode' }).click();
+  await page.getByRole('tab', { name: 'Address' }).click();
+  await page.getByRole('combobox', { name: 'Your address' }).click();
+  await page.getByRole('combobox', { name: 'Your address' }).fill('12 Smith Street, Surry Hills, NSW 2010');
+  await expect(page.getByText('Smith Street, SURRY HILLS NSW 2010')).toBeVisible();
+  await page.getByText('Smith Street, SURRY HILLS NSW 2010').click();
+  await page.waitForTimeout(5000);
 
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Playwright/);
-});
-
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+  // await page.getByRole('combobox', { name: 'Your address' }).click();
+  // await expect(page.getByText('Smith Street, SURRY HILLS NSW 2010')).toBeVisible();
+  // await expect(page.getByRole('option', { name: '12 Smith Street, SURRY HILLS NSW' })).toBeVisible();
+  // await expect(page.getByRole('option', { name: '12 Smith Street, SURRY HILLS NSW' })).toBeVisible();
+  // console.log(await page.getByRole('option', { name: '12 Smith Street, SURRY HILLS NSW' }).textContent());
 });

@@ -2,4 +2,4 @@ node_modules
 results
 playwright-report
 dist
-.env
+.env*

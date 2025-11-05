@@ -8,7 +8,15 @@
   "scripts": {
     "install:all": "npm install && npx playwright install --with-deps",
     "test": "npx playwright test",
+    "test:local": "ENV=local npx playwright test",
+    "test:test": "ENV=test npx playwright test",
     "test:headed": "npx playwright test --headed",
+    "test:prod:headed": "ENV=prod npx playwright test --headed",
+    "test:sit": "ENV=sit npx playwright test",
+    "test:st": "ENV=st npx playwright test", 
+    "test:preprod": "ENV=preprod npx playwright test",
+    "test:prod": "ENV=prod npx playwright test",
+    "test:ci": "ENV=ci CI=true npx playwright test",
     "test:report": "npx playwright show-report results/playwright-report",
     "report:open": "npx playwright show-report",
     "lint": "eslint . --ext .ts,.js"
@@ -18,6 +26,7 @@
     "@types/node": "^24.10.0",
     "@typescript-eslint/eslint-plugin": "^8.46.3",
     "@typescript-eslint/parser": "^8.46.3",
+    "dotenv": "^17.2.3",
     "eslint": "^9.39.1",
     "eslint-plugin-playwright": "^2.3.0",
     "jiti": "^2.6.1",

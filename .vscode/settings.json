@@ -1,0 +1,9 @@
+{
+  "playwright.runtimeExecutable": "/Users/raghualapati/.nvm/versions/node/v24.11.0/bin/node",
+  "playwright.showTrace": false,
+  "playwright.reuseBrowser": false,
+  "terminal.integrated.env.osx": {
+    "PATH": "/Users/raghualapati/.nvm/versions/node/v24.11.0/bin:${env:PATH}"
+  },
+  "typescript.preferences.includePackageJsonAutoImports": "on"
+}
