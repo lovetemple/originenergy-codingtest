@@ -1,4 +1,4 @@
-import { Page, Locator, Request } from '@playwright/test';
+import { Page, Locator, Request, Dialog } from '@playwright/test';
 import { safeClick, safeFill, waitForVisible, isChecked, navigateTo } from '../utils/actions';
 
 export class OriginPricingPage {
@@ -90,6 +90,16 @@ export class OriginPricingPage {
     // Start monitoring requests on the current page
     this.page.on('request', requestHandler);
     
+    const dialogHandler = async (dialog: Dialog) => {
+      // eslint-disable-next-line no-console
+      console.log(`Dialog appeared: ${dialog.message()}`);
+      await dialog.accept(); // or dialog.dismiss()
+    };
+
+    // Add the dialog handler
+    this.page.on('dialog', dialogHandler);
+
+
     const [newPage] = await Promise.all([
       this.page.waitForEvent('popup'),  // Waits for new tab
       this.planList.locator('a').first().click(),          // Click triggers the popup
@@ -97,7 +107,7 @@ export class OriginPricingPage {
 
     // Remove the request listener to avoid memory leaks
     this.page.off('request', requestHandler);
-    
+    this.page.off('dialog', dialogHandler);
     // Wait until the new page finishes loading
     await newPage.waitForLoadState('domcontentloaded');
     return [newPage, this.planName, networkRequestMadeToEnergyMadeEasy, originReferrerFound];
