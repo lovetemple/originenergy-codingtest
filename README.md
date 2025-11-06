@@ -44,6 +44,7 @@ A comprehensive test automation framework for validating Origin Energy's pricing
 - **Design Pattern**: Page Object Model (POM)
 - **CI/CD**: GitHub Actions with artifact management
 - **Containerization**: Docker with Docker Compose
+**Note:**  Reusable components, including helper functions, enhanced documentation (README and src folder), and inline comments, were developed with the assistance of GitHub Copilot and standardized boilerplate frameworks
 
 ### Project Structure
 ```
