@@ -59,8 +59,15 @@ test.describe('Origin Energy pricing flow', () => {
       
       await expect(newPage.getByRole('heading', { name: `${planName}` })).toBeVisible({ timeout: timeouts.navigation });
       await expect(newPage.getByRole('combobox', { name: 'Enter your postcode to view' })).toBeVisible();
-      await expect(newPage.locator('img[src*="068a3484995b2d5a09c0708a68051c14.png"]')).toBeVisible();
+      const imgLocator = newPage.locator('img[src$="068a3484995b2d5a09c0708a68051c14.png"]');
+      await expect(imgLocator).toBeVisible();
+      const isLoaded = await imgLocator.evaluate((el) => 
+        el instanceof HTMLImageElement && el.complete && el.naturalWidth > 0,
+      );
+      // we can also you snap shot
+      expect(isLoaded).toBeTruthy();
       await newPage.close();
+      await page.close();
     
     });
   });
