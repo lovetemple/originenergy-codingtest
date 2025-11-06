@@ -72,17 +72,17 @@ export class OriginPricingPage {
       const headers = request.headers();
       
       // Check if the request URL contains the full energymadeeasy.gov.au domain with https
-      if (url.includes('https://www.energymadeeasy.gov.au/')) {
+      if (url.includes('energymadeeasy.gov.au')) {
         networkRequestMadeToEnergyMadeEasy = true;
         // eslint-disable-next-line no-console
-        console.log(`Href check : Request to energymadeeasy.gov.au detected: ${url}`);
+        console.log('Href check : Request to energymadeeasy.gov.au detected');
         
         // Check for Origin referrer in headers
         const referrer = headers['referer'];
         if (referrer?.includes('https://www.originenergy.com.au/')) {
           originReferrerFound = true;
           // eslint-disable-next-line no-console
-          console.log(`rigin Header check : Origin referrer found in headers: ${referrer}`);
+          console.log(`origin Header check : Origin referrer found in headers: ${referrer}`);
         }
       }
     };
