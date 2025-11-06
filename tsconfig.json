@@ -3,7 +3,7 @@
     "target": "ES2022",                    // Use modern JS features
     "module": "ESNext",                     // Use ES modules
     "moduleResolution": "node",             // Resolve modules like Node.js
-    "lib": ["ES2022"],                      // Only standard JS features needed
+    "lib": ["ES2022", "DOM"],               // Include DOM types for browser APIs
     "types": ["node", "@playwright/test"], // Include Node.js and Playwright types
     "resolveJsonModule": true,              // Allow importing JSON files
     "esModuleInterop": true,                // Allow default imports from CommonJS

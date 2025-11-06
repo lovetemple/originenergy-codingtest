@@ -13,7 +13,7 @@
     "test:headed": "npx playwright test --headed",
     "test:prod:headed": "ENV=prod npx playwright test --headed",
     "test:sit": "ENV=sit npx playwright test",
-    "test:st": "ENV=st npx playwright test", 
+    "test:st": "ENV=st npx playwright test",
     "test:preprod": "ENV=preprod npx playwright test",
     "test:prod": "ENV=prod npx playwright test",
     "test:ci": "ENV=ci CI=true npx playwright test",
@@ -22,6 +22,7 @@
     "lint": "eslint . --ext .ts,.js"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
     "@playwright/test": "^1.56.1",
     "@types/node": "^24.10.0",
     "@typescript-eslint/eslint-plugin": "^8.46.3",

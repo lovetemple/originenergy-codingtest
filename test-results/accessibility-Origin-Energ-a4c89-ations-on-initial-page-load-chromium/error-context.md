@@ -1,0 +1,191 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - link "Skip to main content" [ref=e7] [cursor=pointer]:
+          - /url: "#oetal-application-root"
+          - text: Skip to content
+        - generic [ref=e12]:
+          - link "Origin Energy Homepage" [ref=e14] [cursor=pointer]:
+            - /url: /
+            - img "Origin Energy Logo" [ref=e15]
+          - link "Log in" [ref=e22] [cursor=pointer]:
+            - /url: /auth/callback
+            - text: Log in
+          - generic [ref=e23]:
+            - generic [ref=e24]:
+              - link "At Home" [ref=e25] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e26]: At Home
+              - link "Business" [ref=e27] [cursor=pointer]:
+                - /url: /business/
+                - generic [ref=e28]: Business
+              - link "Enterprise" [ref=e29] [cursor=pointer]:
+                - /url: /enterprise/
+                - generic [ref=e30]: Enterprise
+            - generic [ref=e31]:
+              - link "Energy" [ref=e32] [cursor=pointer]:
+                - /url: /electricity-gas/
+                - generic [ref=e33]: Energy
+              - link "Internet" [ref=e34] [cursor=pointer]:
+                - /url: /internet/
+                - generic [ref=e35]: Internet
+              - link "Solar & Batteries" [ref=e36] [cursor=pointer]:
+                - /url: /solar/
+                - generic [ref=e37]: Solar & Batteries
+              - link "LPG bottles" [ref=e38] [cursor=pointer]:
+                - /url: /lpg/
+                - generic [ref=e39]: LPG bottles
+              - link "Electric vehicles" [ref=e40] [cursor=pointer]:
+                - /url: /electric-vehicles/
+                - generic [ref=e41]: Electric vehicles
+              - link "Moving" [ref=e42] [cursor=pointer]:
+                - /url: /moving/
+                - generic [ref=e43]: Moving
+            - generic [ref=e44]:
+              - link "About" [ref=e45] [cursor=pointer]:
+                - /url: /about/
+                - generic [ref=e46]: About
+              - link "Blog" [ref=e47] [cursor=pointer]:
+                - /url: /blog/
+                - generic [ref=e48]: Blog
+              - link "Help" [ref=e49] [cursor=pointer]:
+                - /url: /help-support
+                - img [ref=e50]
+                - generic [ref=e54]: Help
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - alert:
+                    - generic:
+                      - img
+                    - generic:
+                      - button "close":
+                        - img
+      - generic [ref=e57]:
+        - generic [ref=e61]:
+          - heading "Search detailed energy plan documents for your area" [level=1] [ref=e64]
+          - heading "Enter your address, postcode or BPID/EFS number to find your energy distributor, tariff type and energy plan documents." [level=4] [ref=e66]
+          - generic [ref=e68]:
+            - tablist "tabs" [ref=e71]:
+              - tab "Address" [selected] [ref=e72] [cursor=pointer]:
+                - generic [ref=e73]: Address
+              - tab "Postcode" [ref=e74] [cursor=pointer]:
+                - generic [ref=e75]: Postcode
+              - tab "BPID/EFS" [ref=e76] [cursor=pointer]:
+                - generic [ref=e77]: BPID/EFS
+            - tabpanel [ref=e80]:
+              - generic [ref=e82]:
+                - generic [ref=e87]:
+                  - generic: Your address
+                  - generic [ref=e88]:
+                    - combobox "Your address" [ref=e89]
+                    - group:
+                      - generic: Your address
+                  - paragraph [ref=e90]
+                - generic [ref=e95]:
+                  - generic [ref=e97]: What are you looking for?
+                  - generic [ref=e98]:
+                    - generic [ref=e101] [cursor=pointer]:
+                      - generic [ref=e102]:
+                        - checkbox "Electricity" [checked] [ref=e103]
+                        - img [ref=e104]
+                      - generic [ref=e107]: Electricity
+                    - generic [ref=e110] [cursor=pointer]:
+                      - generic [ref=e111]:
+                        - checkbox "Natural gas" [checked] [ref=e112]
+                        - img [ref=e113]
+                      - generic [ref=e116]: Natural gas
+        - generic [ref=e123]:
+          - generic [ref=e129]:
+            - generic [ref=e131]:
+              - heading "About energy prices" [level=3] [ref=e132]
+              - paragraph [ref=e133]: We can help you understand your energy prices better, so you can compare energy plans and choose the one that best meets your needs.
+              - generic [ref=e134]:
+                - group [ref=e135]:
+                  - generic "What is a daily supply charge?" [ref=e136] [cursor=pointer]
+                - group [ref=e137]:
+                  - generic "What is a usage charge?" [ref=e138] [cursor=pointer]
+                - group [ref=e139]:
+                  - generic "What is a tariff?" [ref=e140] [cursor=pointer]
+                - group [ref=e141]:
+                  - generic "What are additional charges?" [ref=e142] [cursor=pointer]
+                - group [ref=e143]:
+                  - generic "What is an Energy Fact Sheet?" [ref=e144] [cursor=pointer]
+                - group [ref=e145]:
+                  - generic "What is a Basic Plan Information Document?" [ref=e146] [cursor=pointer]
+                - group [ref=e147]:
+                  - generic "What is an exit fee or lock-in contract?" [ref=e148] [cursor=pointer]
+            - paragraph
+          - generic [ref=e153]:
+            - paragraph [ref=e157]: We change our prices occasionally and will let you know when we do. Prices include GST. Customers on fixed rate plans will not be affected by rate changes during their energy plan term.
+            - generic [ref=e164]:
+              - paragraph [ref=e165]:
+                - text: On 1 July 2025, our Standard Retail Contract prices will change for most residential and small business customers. You can view the upcoming prices at
+                - link "Energy price charges" [ref=e166] [cursor=pointer]:
+                  - /url: https://www.originenergy.com.au/pricing/price-changes/
+              - paragraph [ref=e167]:
+                - strong [ref=e168]: "About our electricity and natural gas market offers:"
+                - text: These energy plans are for residential customers only. Not available for all areas or properties types. All gas discounts are off the
+                - link "published Origin Basic charges" [ref=e169] [cursor=pointer]:
+                  - /url: /pricing.html
+                - text: . Discounts only apply to the types of charges described above. Origin also offers a Standing Offer, which is a regulated product. In Victoria, this is the Victorian Default Offer. To find out more, please call us on
+                - link "13 24 61" [ref=e170] [cursor=pointer]:
+                  - /url: tel:132451
+                - text: . For more details on direct debit, refer to
+                - link "Direct debit terms and conditions" [ref=e171] [cursor=pointer]:
+                  - /url: /content/origin-ui/en/terms-and-conditions/direct-debit-terms-and-conditions.html
+                - text: .
+              - paragraph [ref=e172]:
+                - strong [ref=e173]: With Origin Solar Boost
+                - text: (with tiered feed-in tariff), your solar PV system must be net metered, and you must not be receiving a feed-in tariff under any government scheme. You will receive a higher than standard feed-in tariff amount until the daily export limit is reached. The daily export limit is averaged across your billing period (calculated by multiplying the number of days in your billing period by your daily export limit of 8kWh). If you export more than the daily limit of 8kWh, you will receive our standard retailer feed-in tariff (as published on our website). When your energy plan ends, you’ll receive our standard retailer feed-in tariff as published on our website. Feed-in tariff rates are GST inclusive (where applicable). For Victorian customers, the
+                - link "Terms and Conditions for Feed-in Tariffs – Victoria" [ref=e174] [cursor=pointer]:
+                  - /url: /terms-and-conditions/vic-feed-in-tariff.html
+                - text: apply to both the additional feed-in tariff and standard retailer feed-in tariff.
+              - paragraph [ref=e175]:
+                - strong [ref=e176]: With Origin Go Solar Variable
+                - text: ", your solar PV system must be net metered, and you must not be receiving a feed-in tariff under any government scheme. The higher feed-in tariff will apply until the daily export limit is reached. The daily export limit is averaged across your billing period (calculated by multiplying the number of days in your billing period by your daily export limit of 8kWh). If you export more than the daily limit of 8kWh, you will receive our standard retailer feed-in tariff (as published on our website). When your energy plan ends, you’ll receive our standard retailer feed-in tariff as published on our website. Feed-in tariff rates are GST inclusive (where applicable). For Victorian customers, the"
+                - link "Terms and Conditions for Feed-in Tariffs – Victoria" [ref=e177] [cursor=pointer]:
+                  - /url: /terms-and-conditions/vic-feed-in-tariff.html
+                - text: apply to both the additional feed-in tariff and standard retailer feed-in tariff.
+              - paragraph [ref=e178]:
+                - strong [ref=e179]: With Origin Solar Boost Plus
+                - text: ", you must purchase an eligible solar PV system from us, your solar PV system must be net metered and must not be larger than 10kW. You must not be receiving a feed-in tariff under any government scheme. When your energy plan ends, you’ll receive our standard retailer feed-in tariff as published on our website. Feed-in tariff rates are GST inclusive (where applicable). For Victorian customers, the"
+                - link "Terms and Conditions for Feed-in Tariffs" [ref=e180] [cursor=pointer]:
+                  - /url: /terms-and-conditions/vic-feed-in-tariff.html
+                - text: – Victoria apply to both the additional feed-in tariff and standard retailer feed-in tariff.
+              - paragraph [ref=e181]: When you enter your information, we may use it to contact you about this sale.
+    - generic [ref=e187]:
+      - separator [ref=e188]
+      - generic [ref=e189]:
+        - paragraph [ref=e193]:
+          - link "Privacy" [ref=e194] [cursor=pointer]:
+            - /url: https://www.originenergy.com.au/privacy/
+        - paragraph [ref=e198]:
+          - link "Terms of Use" [ref=e199] [cursor=pointer]:
+            - /url: https://www.originenergy.com.au/terms-of-use/
+        - paragraph [ref=e201]:
+          - link "Terms and Conditions" [ref=e202] [cursor=pointer]:
+            - /url: https://www.originenergy.com.au/terms-and-conditions/
+        - paragraph [ref=e204]:
+          - link "Help and Contact" [ref=e205] [cursor=pointer]:
+            - /url: https://www.originenergy.com.au/help-support
+        - paragraph [ref=e207]:
+          - link "Residential plan documents" [ref=e208] [cursor=pointer]:
+            - /url: https://www.originenergy.com.au/pricing.html
+        - paragraph [ref=e210]:
+          - link "Business plan documents" [ref=e211] [cursor=pointer]:
+            - /url: https://www.originenergy.com.au/business/pricing.html
+      - paragraph [ref=e217]: © 2025 Origin Energy Limited
+  - iframe [ref=e219]:
+    
+  - img [ref=e220]
+  - button "Open Intercom Messenger" [ref=e221] [cursor=pointer]:
+    - generic:
+      - img
+```
