@@ -21,7 +21,7 @@ test.describe('Origin Energy pricing flow', () => {
     // '100 George Street, Sydney, NSW 2000',
   
   addressList.forEach((address) => {
-    test.skip(`search address ${address}, filter electricity off and validate referral handoff`, async ({ page }, testInfo) => {
+    test(`search address ${address}, filter electricity off and validate referral handoff`, async ({ page }, testInfo) => {
       const home = new OriginPricingPage(page);
       
       // attempt search - wrapped in try to allow fallback sites

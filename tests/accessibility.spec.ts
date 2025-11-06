@@ -16,7 +16,7 @@ test.describe('Origin Energy Pricing Page - Accessibility Testing', () => {
     await page.waitForLoadState('domcontentloaded');
   });
 
-  test.only('should not have any accessibility violations on initial page load', async ({ page }, testInfo) => {
+  test('should not have any accessibility violations on initial page load', async ({ page }, testInfo) => {
     // Run accessibility scan using AxeBuilder
     const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
 
