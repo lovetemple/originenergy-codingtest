@@ -39,7 +39,7 @@ test.describe('Origin Energy pricing flow', () => {
         expect(name.toLowerCase()).toContain('gas');
       });
 
-      const [newPage, planName,networkRequestMadeToEnergyMadeEasy, originReferrerFound, originImageSrcFound] = await home.performReferralHandOff();
+      const [newPage, planName, networkRequestMadeToEnergyMadeEasy, originReferrerFound] = await home.performReferralHandOff();
       
       // // ✅ Check the URL of the new page
       expect(newPage.url()).toContain('www.energymadeeasy.gov.au');
