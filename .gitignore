@@ -1,8 +1,31 @@
+# Dependencies
 node_modules
+
+# Build outputs
 results
-playwright-report
 dist
+
+# Test artifacts
+test-results/
+playwright-report/
+
+# Video files (from Playwright tests)
+*.webm
+*.mp4
+*.avi
+*.mov
+
+# Screenshot files (test artifacts)
+*.png
+*.jpg
+*.jpeg
+
+# Trace files
+*.zip
+
+# Environment files (contain sensitive data)
 .env*
+
 # GitHub Actions workflows
 .github/workflows/playwright.yml
 

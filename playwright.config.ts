@@ -36,8 +36,14 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: process.env.BASE_URL || 'https://www.originenergy.com.au',
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    /* Collect trace only on failures - saves disk space */
+    trace: 'retain-on-failure',
+    
+    /* Take screenshot on failure */
+    screenshot: 'only-on-failure',
+    
+    /* Record video on failure */
+    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
@@ -47,11 +53,6 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         // CI optimizations
-        ...(process.env.CI && {
-          viewport: { width: 1280, height: 720 }, // Smaller for CI
-          video: 'retain-on-failure', // Only keep videos on failure
-          screenshot: 'only-on-failure', // Only screenshots on failure
-        }),
       },
     },
 
