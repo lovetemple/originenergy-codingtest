@@ -1,6 +1,7 @@
 import { Page, Locator, Request, Dialog } from '@playwright/test';
 import { safeClick, safeFill, waitForVisible, isChecked, navigateTo } from '../utils/actions';
 
+
 export class OriginPricingPage {
   readonly page: Page;
   readonly addressButton: Locator;
@@ -18,6 +19,7 @@ export class OriginPricingPage {
     this.planList = page.locator('table[data-id="table"]:nth-of-type(1) tr');
     this.electricityCheckbox = page.getByRole('checkbox', { name: 'Electricity' });
     this.gasPlanItems = page.getByRole('cell', { name: 'Natural gas' });
+
   }
 
   async goto() {
@@ -110,6 +112,7 @@ export class OriginPricingPage {
     this.page.off('dialog', dialogHandler);
     // Wait until the new page finishes loading
     await newPage.waitForLoadState('domcontentloaded');
+    
     return [newPage, this.planName, networkRequestMadeToEnergyMadeEasy, originReferrerFound];
   }
 }

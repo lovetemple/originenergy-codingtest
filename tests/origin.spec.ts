@@ -39,7 +39,7 @@ test.describe('Origin Energy pricing flow', () => {
         expect(name.toLowerCase()).toContain('gas');
       });
 
-      const [newPage, planName,networkRequestMadeToEnergyMadeEasy, originReferrerFound] = await home.performReferralHandOff();
+      const [newPage, planName,networkRequestMadeToEnergyMadeEasy, originReferrerFound, originImageSrcFound] = await home.performReferralHandOff();
       
       // // ✅ Check the URL of the new page
       expect(newPage.url()).toContain('www.energymadeeasy.gov.au');
@@ -59,6 +59,7 @@ test.describe('Origin Energy pricing flow', () => {
       
       await expect(newPage.getByRole('heading', { name: `${planName}` })).toBeVisible({ timeout: timeouts.navigation });
       await expect(newPage.getByRole('combobox', { name: 'Enter your postcode to view' })).toBeVisible();
+      await expect(newPage.locator('img[src*="068a3484995b2d5a09c0708a68051c14.png"]')).toBeVisible();
       await newPage.close();
     
     });
