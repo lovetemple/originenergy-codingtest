@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  tests:
+    build: .
+    environment:
+      - ENV=local
+    volumes:
+      - ./test-results:/app/test-results
+      - ./playwright-report:/app/playwright-report
+    command: npm test
+
+  report:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./playwright-report:/app/playwright-report
+    command: npx playwright show-report --port=8080 --host=0.0.0.0
+    depends_on:
+      - tests

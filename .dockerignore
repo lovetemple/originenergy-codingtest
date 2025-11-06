@@ -1,0 +1,19 @@
+# Add Docker-specific ignores
+node_modules
+npm-debug.log*
+.npm
+.nyc_output
+coverage/
+
+# Test outputs
+test-results/
+playwright-report/
+*.png
+*.webm
+
+# Environment files (already in .gitignore but adding for clarity)
+.env*
+
+# Docker files
+Dockerfile.dev
+docker-compose.override.yml

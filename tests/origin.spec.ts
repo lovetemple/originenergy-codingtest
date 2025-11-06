@@ -21,7 +21,7 @@ test.describe('Origin Energy pricing flow', () => {
     // '100 George Street, Sydney, NSW 2000',
   
   addressList.forEach((address) => {
-    test(`search address ${address}, filter electricity off and validate referral handoff`, async ({ page }) => {
+    test(`search address ${address}, filter electricity off and validate referral handoff`, async ({ page }, testInfo) => {
       const home = new OriginPricingPage(page);
       
       // attempt search - wrapped in try to allow fallback sites
@@ -47,7 +47,14 @@ test.describe('Origin Energy pricing flow', () => {
       expect(planName).not.toBe('');
       expect(networkRequestMadeToEnergyMadeEasy).toBeTruthy();
       expect(originReferrerFound).toBeTruthy();
-      await newPage.screenshot({ path: `${planName}.png` });
+      
+      // Take screenshot and attach to test report
+      const screenshot = await newPage.screenshot();
+      await testInfo.attach(`Referral Page - ${planName}`, {
+        body: screenshot,
+        contentType: 'image/png',
+      });
+      
       // // ✅ Assert an element on the new page is visible
       
       await expect(newPage.getByRole('heading', { name: `${planName}` })).toBeVisible({ timeout: timeouts.navigation });
