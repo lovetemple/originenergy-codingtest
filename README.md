@@ -1,6 +1,7 @@
 # Origin Energy Pricing Flow Test Automation
 
 A comprehensive test automation framework for validating Origin Energy's pricing flow and referral handoff to Energy Made Easy (EME) using Playwright and TypeScript.
+Note : AI used for enhancing documenation/ comments and on helper boiler plate functions under src etc. All the tests/ validations are desgined, scripted are verified/validated by myself.
 
 ## 🎯 What is Tested
 
